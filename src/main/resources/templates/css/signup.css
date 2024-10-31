@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+header {
+    background-color: #e0f7fa;
+    padding: 20px;
+    text-align: center; /* h1을 중앙 정렬 */
+}
+
+nav {
+    text-align: right; /* nav 요소를 오른쪽 정렬 */
+    margin-top: -30px; /* h1과 nav 사이의 간격 조절 */
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.signup-form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form label {
+    margin-top: 10px;
+}
+
+.signup-form input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.signup-form button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+}
