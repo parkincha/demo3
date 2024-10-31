@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마이 페이지</title>
+  <link rel="stylesheet" href="css/mypage.css">
+</head>
+<body>
+<header>
+  <h1><a href="home.html"/> 찾개냥</h1>
+  <nav>
+    <a href="home.html">HOME</a>
+    <a href="login.html">LOGIN</a>
+
+  </nav>
+</header>
+<main>
+  <h2>나의 정보</h2>
+  <div class="user-info">
+    <p><strong>이름:</strong> 사용자 이름</p>
+    <p><strong>이메일:</strong> 사용자 이메일</p>
+    <p><strong>전화번호:</strong> 사용자 전화번호</p>
+    <!-- 추가적인 사용자 정보 -->
+  </div>
+
+  <h2>내가 쓴 글</h2>
+
+    <table>
+      <thead>
+      <tr>
+        <th>No</th>
+        <th>제목</th>
+        <th>작성 날짜</th>
+        <th>조회수</th>
+        <th>상태</th>
+        <th>요약</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!-- PHP를 통해 사용자 작성 글 목록을 가져올 것입니다. -->
+      <?php
+
+
+      foreach ($posts as $post) {
+      echo "<tr>
+        <td>{$post['id']}</td>
+        <td><a href='post-detail.php?id={$post['id']}'>{$post['title']}</a></td>
+        <td>{$post['date']}</td>
+        <td>{$post['views']}</td>
+        <td>{$post['status']}</td>
+        <td>{$post['summary']}</td>
+      </tr>
+      </tbody>
+    </table>
+
+
+</main>
+<footer>
+  <div class="withdrawal">
+    <h2>회원 탈퇴</h2>
+    <p>회원 탈퇴를 원하시면 아래 버튼을 클릭하세요.</p>
+    <form action="withdraw.php" method="post">
+      <button type="submit"><a href="bye.html"/> 회원 탈퇴</button>
+    </form>
+  <p>© 2024 찾개냥. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

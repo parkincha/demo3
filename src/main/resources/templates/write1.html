@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반려동물을 찾아요</title>
+  <link rel="stylesheet" href="css/write1.css">
+</head>
+<body>
+<header>
+  <h1><a href="home.html"/> 찾개냥</h1>
+  <nav>
+    <a href="home.html">HOME</a>
+    <a href="login.html">LOGIN</a>
+    <a href="mypage.html">MY PAGE</a>
+  </nav>
+</header>
+<main>
+  <h2>반려동물을 찾아요</h2>
+  <form action="write2.html" method="post" id="pet-form">
+    <div class="form-group">
+      <label for="type">Type:</label>
+      <select id="type" name="type" required>
+        <option value="">선택하세요</option>
+        <option value="개">강아지</option>
+        <option value="고양이">고양이</option>
+        <option value="기타">기타</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="pet-name">애완동물 이름:</label>
+      <input type="text" id="pet-name" name="pet-name" required>
+    </div>
+    <div class="form-group">
+      <label for="owner-name">보호자 이름:</label>
+      <input type="text" id="owner-name" name="owner-name" required>
+    </div>
+    <div class="form-group">
+      <label for="lost-place">잃어버린 장소:</label>
+      <input type="text" id="lost-place" name="lost-place" required>
+    </div>
+    <div class="form-buttons">
+      <button type="reset">리셋</button>
+      <button type="submit">다음</button>
+    </div>
+  </form>
+</main>
+<footer>
+  <p>© 2024 찾개냥. All rights reserved.</p>
+</footer>
+</body>
+</html>
