@@ -2,8 +2,10 @@ package com.team4project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
+@EntityScan(basePackages = "com.team4project.entity")
 public class Team4ProjectApplication {
 
     public static void main(String[] args) {
