@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'PocheonMakgeolli';
+    src: url('../fonts/PochenMakgeolli.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,20 +12,30 @@ body {
 }
 
 header {
-    background-color: #e0f7fa;
-    padding: 20px;
-    text-align: center; /* h1을 중앙 정렬 */
+    font-family: 'PocheonMakgeolli', sans-serif;
+    background-color: #a3d879 !important;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(19, 14, 14, 0.1);
 }
 
+span {
+    font-size: 1rem; /* 작은 폰트 크기 설정 */
+    display: inline; /* 같은 라인에 표시 */
+}
+
+/* 네비게이션 스타일 */
 nav {
-    text-align: right; /* nav 요소를 오른쪽 정렬 */
-    margin-top: -30px; /* h1과 nav 사이의 간격 조절 */
+    text-align: right; /* 오른쪽 정렬 */
+    margin-top: -5px; /* 필요시 조정 */
 }
 
 nav a {
-    margin: 0 15px;
+    margin: 0 50px;
     text-decoration: none;
-    color: #333;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
 main {
@@ -61,11 +77,20 @@ input[type="text"], select {
 }
 
 button[type="reset"] {
-    background-color: #f39c12; /* 리셋 버튼 색상 */
+    background-color: #2ecc71; /* 리셋 버튼 색상 */
     color: white;
 }
 
 button[type="submit"] {
     background-color: #2ecc71; /* 다음 버튼 색상 */
     color: white;
+}
+
+/* 푸터 스타일 */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #fff8e0;
+    border-top: 1px solid #fff8e0;
+    margin-top: 20px;
 }

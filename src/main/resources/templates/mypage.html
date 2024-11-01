@@ -7,12 +7,15 @@
   <link rel="stylesheet" href="css/mypage.css">
 </head>
 <body>
-<header>
-  <h1><a href="user/home.html"/> 찾개냥</h1>
-  <nav>
-    <a href="user/home.html">HOME</a>
-    <a href="login.html">LOGIN</a>
+<header class="header">
+  <span style="font-size: 2rem; display: inline;"> 여기서</span>
+  <h1 style="display: inline; font-size: 5rem;">찾개냥</h1>
+  <!-- 작은 텍스트 추가 -->
+  <nav class="nav justify-content-end mt-3">
 
+    <a class="nav-link text-black" href="signup.html">SIGN UP</a>
+    <a class="nav-link text-black" href="login.html">LOGIN</a>
+    <a class="nav-link text-black" href="home.html">HOME</a>
   </nav>
 </header>
 <main>
@@ -52,17 +55,20 @@
         <td>{$post['summary']}</td>
       </tr>
       </tbody>
+
     </table>
+  <div class="withdrawal" style="text-align: center;">
+    <h4>회원 탈퇴</h4>
+    <h5>회원 탈퇴를 원하시면 아래 버튼을 클릭하세요.</h5>
+    <form action="withdraw.php" method="post" style="display: inline-block;">
+      <button type="submit">회원 탈퇴</button>
+    </form>
+  </div>
 
 
 </main>
 <footer>
-  <div class="withdrawal">
-    <h2>회원 탈퇴</h2>
-    <p>회원 탈퇴를 원하시면 아래 버튼을 클릭하세요.</p>
-    <form action="withdraw.php" method="post">
-      <button type="submit"><a href="bye.html"/> 회원 탈퇴</button>
-    </form>
+
   <p>© 2024 찾개냥. All rights reserved.</p>
   </div>
 </footer>
