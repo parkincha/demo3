@@ -24,9 +24,9 @@ public class UserController {
     @PostMapping("/register")
     public String register(User user){
         System.out.println("register user: " + user);
-        String rawPassword = user.getPassword();
+        String rawPassword = user.getPwd();
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
-        user.setPassword(encPassword);
+        user.setPwd(encPassword);
         user.setRole("USER"); // USER라는 role을 부여해서 user만 접근 가능하게
         userRepository.save(user);
         return "redirect:/user/login"; // 회원가입 후 로그인 페이지로 이동
@@ -34,5 +34,8 @@ public class UserController {
 
     @GetMapping("/login")
     public void login(){
+    }
+    @GetMapping("/home") //홈화면
+    public void home(){
     }
 }

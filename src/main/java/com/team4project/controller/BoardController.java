@@ -42,15 +42,15 @@ public class BoardController {
         model.addAttribute("lists", boardService.list());
         return "board/list";
     }
-    @PostMapping("/update")
+/*    @PostMapping("/update")
     public String update(Board board) {
         boardService.update(board);
-        return "redirect:/board/view?num=" + board.getNum();
-    }
+        return "redirect:/board/view?num=" + board.getNum();*/
+   /* }
     @GetMapping("/delete")
     public String delete(@RequestParam Long num) {
         boardService.delete(num);
         return "redirect:/board/list";
-    }
+    }*/
 
 }

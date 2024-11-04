@@ -30,6 +30,16 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    public Board findById(Long bno) {
+        return null;
+    }
+
+    @Override
+    public void update(Board board) {
+
+    }
+
+    /*@Override
     public Board findById(Long num) {
         Board board = boardRepository.findById(num).get();
         board.updateHitcount(); // 조회수 증가
@@ -42,7 +52,7 @@ public class BoardServiceImpl implements BoardService {
         oldBoard.setTitle(board.getTitle());
         oldBoard.setContent(board.getContent());
         boardRepository.save(oldBoard); // 수정된 게시글 저장
-    }
+    }*/
 
     @Override
     public void delete(Long num) {
