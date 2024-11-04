@@ -13,15 +13,16 @@ import org.springframework.stereotype.Service;
 @Log4j2
 @RequiredArgsConstructor
 public class PrincipalDetailService implements UserDetailsService {
-    private final UserRepository userRepository; //인증처리할때 userdetailservice를 통해서 username이 DB에 있는지만 확인하면 됨
+    private final UserRepository userRepository; // 인증처리할때 userdetailservice를 통해서 username이 DB에 있는지만 확인하면 됨
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("loadUserByUsername");
         User user = userRepository.findByUsername(username);
-        if(user==null){
-           return null;
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
         }
-        PrincipalDetails principalDetails = new PrincipalDetails(user); //시큐리티 세션에 유저 정보가 저장됨
+        PrincipalDetails principalDetails = new PrincipalDetails(user); // 시큐리티 세션에 유저 정보가 저장됨
         log.info(principalDetails);
         return principalDetails;
     }

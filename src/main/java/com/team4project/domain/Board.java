@@ -27,7 +27,7 @@ public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "reportBno")
+    @Column(name = "reportId")
     private Long bno;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -35,6 +35,14 @@ public class Board {
     private User user; //작성자
 
     private String title; // add title
+
+    private String petDescription;
+    private Date lostDate;
+    private String lostLocation;
+    private String petBreeds;
+    private String petGender;
+    private String petAge;
+    private String petWeight;
 
 
     @Enumerated(EnumType.STRING)
@@ -84,5 +92,10 @@ public class Board {
         imageSet.forEach(boardImage -> boardImage.changeBoard(null));
         this.imageSet.clear();
     }
+
+
+
+
+
 
 }

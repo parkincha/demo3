@@ -12,16 +12,19 @@ import lombok.Setter;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "pet_color")
 public class PetColor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "colorId")
     private Long bno;
 
     @Enumerated(EnumType.STRING)
     private PetColorType color;
 
     @OneToOne(mappedBy = "petColor", fetch = FetchType.LAZY)
+    @JoinColumn(name = "boardId")
     private Board board;
 
 

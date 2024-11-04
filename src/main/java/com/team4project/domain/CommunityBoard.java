@@ -1,9 +1,5 @@
 package com.team4project.domain;
 
-import com.team4project.domain.boardContent.PetType;
-import com.team4project.domain.boardContent.PostType;
-import com.team4project.domain.boardContent.Status;
-import com.team4project.domain.boardContent.color.PetColor;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,34 +24,33 @@ public class CommunityBoard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "communicyBno")
+    @Column(name = "communityId")
     private Long bno;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
-    private User user; //작성자
+    private User user; // 작성자
 
     private String title; // add title
 
-
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="createdAt")
+    @Column(name = "createdAt")
     private Date createdAt;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="updatedAt")
+    @Column(name = "updatedAt")
     private Date updatedAt;
 
-    @ColumnDefault("0") //기본값 0
-    private Long hitcount; //조회수
+    @ColumnDefault("0") // 기본값 0
+    private Long hitcount; // 조회수
 
     public void updateHitcount() {
-        this.hitcount =  this.hitcount+1; //조회수 증가
+        this.hitcount = this.hitcount + 1; // 조회수 증가
     }
 
-    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY, cascade = {CascadeType.ALL},
+    @OneToMany(mappedBy = "communityBoard", fetch = FetchType.LAZY, cascade = {CascadeType.ALL},
             orphanRemoval = true)
     @BatchSize(size = 50)
     private Set<CommunityImage> imageSet = new HashSet<>();
@@ -64,9 +59,13 @@ public class CommunityBoard {
         CommunityImage image = CommunityImage.builder()
                 .uuid(uuid)
                 .fileName(fileName)
+                .communityBoard(this)
                 .build();
         imageSet.add(image);
     }
 
-
+    public void clearImages() {
+        imageSet.forEach(image -> image.setCommunityBoard(null));
+        imageSet.clear();
+    }
 }

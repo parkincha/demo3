@@ -1,13 +1,10 @@
 package com.team4project.domain;
 
-
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.xml.stream.events.Comment;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +13,14 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true, name = "userId") //username은 null이면 안되고, 중복되면 안된다.
+    @Column(nullable = false, unique = true, name = "userId")
     private Long id; // 계정 아이디
+
+    private String username; // add username field
     private String name;
     private String pwd;
     private String email;
@@ -33,9 +33,6 @@ public class User {
         this.createdDate = LocalDateTime.now();
     }
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)  // 사용자와 게시글은 1:N 관계
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Board> boards = new ArrayList<>();
-
-
 }
-
