@@ -13,7 +13,7 @@
 </head>
 <body>
 <header class="header">
-    <span style="font-size: 2rem; display: inline;"> 여기서1</span>
+    <span style="font-size: 2rem; display: inline;"> 여기서</span>
     <h1 style="display: inline; font-size: 7rem;">찾개냥</h1>
     <nav class="nav justify-content-end mt-3">
         <a class="nav-link text-black" href="signup.html">SIGN UP</a>
@@ -42,15 +42,15 @@
             <textarea name="content" id="content" class="form-control" readonly="readonly">[[${board.content}]]</textarea>
         </div>
         <div class="form-group mt-5">
-            <span th:if="${#authentication.principal.username==board.getWriter()}">
-                <a th:href="|@{/board/modify(num=${board.num})}|">
+            <span th:if="${#authentication.principal.userId==board.getWriter()}">
+                <a th:href="|@{/templates/communityBoard/modify(num=${board.num})}|">
                     <button type="button" id="btnUpdate" class="btn btn-secondary">수정</button>
                 </a>
-                <a th:href="|@{/board/delete(num=${board.num})}|">
+                <a th:href="|@{/templates/communityBoard/delete(num=${board.num})}|">
                     <button type="button" id="btnDelete" class="btn btn-danger">삭제</button>
                 </a>
             </span>
-            <a th:href="|@{/board/list}|">
+            <a th:href="|@{/templates/communityBoard/list}|">
                 <button type="button" id="btnList" class="btn btn-info">List</button>
             </a>
         </div>

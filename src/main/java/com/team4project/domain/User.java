@@ -24,11 +24,7 @@ public class User {
     private String name;
     private String pwd;
     private String email;
-
-
-
-
-
+    private String mobile;
     private LocalDateTime createdDate;
     private String role;
 

@@ -28,7 +28,7 @@ public class CommunityBoard {
     private Long bno;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "userNo")
     private User user; // 작성자
 
     private String title; // add title
