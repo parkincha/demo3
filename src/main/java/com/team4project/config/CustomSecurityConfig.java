@@ -34,7 +34,7 @@ public class CustomSecurityConfig {
                 .formLogin(formLoginConfigurer -> formLoginConfigurer
                         .loginPage("/user/login") // 로그인 페이지 설정
                         .loginProcessingUrl("/loginProcess") // 로그인 처리 페이지 설정
-                        .usernameParameter("username") // 로그인 페이지의 username 파라미터 설정
+                        .usernameParameter("userId") // 로그인 페이지의 username 파라미터 설정
                         .passwordParameter("password") // 로그인 페이지의 password 파라미터 설정
                         .defaultSuccessUrl("/") // 로그인 성공 후 이동할 페이지
                         .permitAll())
