@@ -40,7 +40,7 @@
                 <a class="nav-link" href="/user/login">Login</a>
             </li>
             <li sec:authorize="isAuthenticated()" class="nav-item">
-                <a class="nav-link" href="/logout">Logout([[${#authentication.principal.username}]])</a>
+                <a class="nav-link" href="/logout">Logout([[${#authentication.principal.userId}]])</a>
             </li>
         </ul>
     </div>

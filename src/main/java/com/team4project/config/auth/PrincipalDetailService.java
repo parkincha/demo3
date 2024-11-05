@@ -16,11 +16,11 @@ public class PrincipalDetailService implements UserDetailsService {
     private final UserRepository userRepository; // 인증처리할때 userdetailservice를 통해서 username이 DB에 있는지만 확인하면 됨
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
         log.info("loadUserByUsername");
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUserId(userId);
         if (user == null) {
-            throw new UsernameNotFoundException("User not found with username: " + username);
+            throw new UsernameNotFoundException("User not found with userId: " + userId);
         }
         PrincipalDetails principalDetails = new PrincipalDetails(user); // 시큐리티 세션에 유저 정보가 저장됨
         log.info(principalDetails);

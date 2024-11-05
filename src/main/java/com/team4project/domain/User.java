@@ -17,20 +17,21 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true, name = "userId")
-    private Long id; // 계정 아이디
-
-    private String username; // add username field
+    @Column(nullable = false, unique = true, name = "userNo")
+    private Long uNo; // 계정 고유 아이디
+    @Column(nullable = false, unique = true)
+    private String userId; // add username field
     private String name;
     private String pwd;
     private String email;
     private String mobile;
-    private LocalDateTime createdDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime createdAt;
     private String role;
 
     @PrePersist
     protected void onCreate() {
-        this.createdDate = LocalDateTime.now();
+        this.createdAt = LocalDateTime.now();
     }
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)

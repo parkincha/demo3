@@ -42,7 +42,7 @@
             <textarea name="content" id="content" class="form-control" readonly="readonly">[[${board.content}]]</textarea>
         </div>
         <div class="form-group mt-5">
-            <span th:if="${#authentication.principal.username==board.getWriter()}">
+            <span th:if="${#authentication.principal.userId==board.getWriter()}">
                 <a th:href="|@{/board/modify(num=${board.num})}|">
                     <button type="button" id="btnUpdate" class="btn btn-secondary">수정</button>
                 </a>
