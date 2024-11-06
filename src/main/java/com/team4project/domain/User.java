@@ -20,6 +20,8 @@ public class User {
     @Column(nullable = false, unique = true, name = "userId")
     private Long id; // 계정 아이디
 
+    private String userId;
+
     private String username; // add username field
     private String name;
     private String pwd;
