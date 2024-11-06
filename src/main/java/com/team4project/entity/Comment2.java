@@ -3,7 +3,7 @@ package com.team4project.entity;
 import jakarta.persistence.*;
 
 @Entity
-public class Comment {
+public class Comment2 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,5 +16,5 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User author;
+    private User2 author;
 }

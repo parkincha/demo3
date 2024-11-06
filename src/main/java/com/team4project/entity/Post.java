@@ -17,9 +17,9 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User author;
+    private User2 author;
 
     @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
-    private List<Comment> comments=new ArrayList<>();
+    private List<Comment2> comments=new ArrayList<>();
 
 }

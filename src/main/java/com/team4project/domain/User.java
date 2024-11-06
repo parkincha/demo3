@@ -36,4 +36,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Board> boards = new ArrayList<>();
+
+    public void setUsername(String testUser) { //은호. 빌드 오류 방지용 메소드 작성. 보드 작업하시다가 필요없으면 삭제해도 됩니다.
+    }
 }
