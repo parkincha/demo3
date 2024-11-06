@@ -5,7 +5,6 @@ import com.team4project.board4.dto.CboardDTO;
 import com.team4project.board4.dto.CpageRequestDTO;
 import com.team4project.board4.dto.CpageResponseDTO;
 import com.team4project.board4.dto.upload.CuploadFileDTO;
-import com.team4project.board4.dto.upload.CuploadResultDTO;
 import com.team4project.board4.service.CboardService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -41,18 +40,18 @@ public class CboardController {
 
     private final CboardService cboardService;
 
-    @GetMapping("/list")
+    @GetMapping("/clist")
     public void list(CpageRequestDTO cpageRequestDTO, Model model) {
 
         CpageResponseDTO<CboardDTO> cresponseDTO = cboardService.list(cpageRequestDTO);
         log.info(cresponseDTO);
         model.addAttribute("cresponseDTO", cresponseDTO);
     }
-    @GetMapping("/register")
+    @GetMapping("/cregister")
     public void registerGET() {
     }
 
-    @PostMapping("/register")
+    @PostMapping("/cregister")
     public String registerPOST(CuploadFileDTO cuploadFileDTO,
                                CboardDTO cboardDTO,
                                RedirectAttributes redirectAttributes) {
@@ -67,16 +66,16 @@ public class CboardController {
 
         log.info(cboardDTO);
         Long cno = cboardService.register(cboardDTO);
-        return "redirect:/cboard/list";
+        return "redirect:/cboard/clist";
     }
 
-    @GetMapping({"/read", "/modify"})
+    @GetMapping({"/cread", "/cmodify"})
     public void read(Long cno, CpageRequestDTO cpageRequestDTO, Model model) {
         CboardDTO cboardDTO = cboardService.readOne(cno);
         log.info(cboardDTO);
         model.addAttribute("dto", cboardDTO);
     }
-    @PostMapping("/modify")
+    @PostMapping("/cmodify")
     public String modify(CuploadFileDTO cuploadFileDTO, CpageRequestDTO cpageRequestDTO,
                          @Valid CboardDTO cboardDTO,
                          BindingResult bindingResult,
@@ -101,15 +100,15 @@ public class CboardController {
             String link = cpageRequestDTO.getLink();
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
             redirectAttributes.addAttribute("cno", cboardDTO.getCno());
-            return "redirect:/cboard/modify?" + link;
+            return "redirect:/cboard/cmodify?" + link;
         }
         cboardService.modify(cboardDTO);
         redirectAttributes.addFlashAttribute("result", "modified");
         redirectAttributes.addAttribute("cno", cboardDTO.getCno());
-        return "redirect:/cboard/read";
+        return "redirect:/cboard/cread";
 
     }
-    @PostMapping("/remove")
+    @PostMapping("/cremove")
     public String remove(CboardDTO cboardDTO, RedirectAttributes redirectAttributes) {
         log.info("remove post.. " + cboardDTO);
         List<String> fileNames = cboardDTO.getFileNames();
@@ -122,7 +121,7 @@ public class CboardController {
 
 
         redirectAttributes.addFlashAttribute("result", "removed");
-        return "redirect:/cboard/list";
+        return "redirect:/cboard/clist";
     }
 
     private List<String> fileUpload(CuploadFileDTO cuploadFileDTO) {

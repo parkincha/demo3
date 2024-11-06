@@ -3,6 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/basic.html}">
 
+
 <h2>커뮤니티</h2>
 <div class="search-bar">
     <label for="start-date">시작 날짜:</label>
@@ -61,7 +62,7 @@
                 <tr th:each="dto : ${responseDTO.dtoList}">
                     <th scope="row">[[${dto.bno}]]</th>
                     <td>
-                        <a th:href="|@{/communityBoard/read(bno=${dto.bno})}&${link}|">[[${dto.title}]]</a>
+                        <a th:href="|@{/templates/cboard/read(bno=${dto.bno})}&${link}|">[[${dto.title}]]</a>
                     </td>
                     <td>[[${dto.writer}]]</td>
                     <td>[[${dto.regDate}]]</td>

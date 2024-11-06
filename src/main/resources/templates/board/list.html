@@ -24,7 +24,7 @@
             <tbody>
             <tr th:each="board:${lists}">
                 <td>[[${board.num}]]</td>
-                <td><a th:href="|@{/templates/communityBoard/view(num=${board.num})}|">[[${board.title }]]</a></td>
+                <td><a th:href="|@{/templates/cboard/view(num=${board.num})}|">[[${board.title }]]</a></td>
                 <td>[[${board.writer }]]</td>
                 <td>[[${board.regdate }]]</td>
                 <td>[[${board.hitcount }]]</td>
