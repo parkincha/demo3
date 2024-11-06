@@ -22,6 +22,11 @@ public class Board1Service {
         return board1Repository.save(board1); // 저장된 board1 객체를 반환
     }
 
+    public List<Board1> searchByKeyword(String postType, String keyword) {
+        return board1Repository.findByPostTypeAndTitleContainingOrPostTypeAndContentContaining(postType, keyword, postType, keyword);
+    }
+    //검색기능
+
     public Board1 findById(Long id) {
         return board1Repository.findById(id).orElseThrow();
     }

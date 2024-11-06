@@ -43,4 +43,11 @@ public class Board1Controller {
         model.addAttribute("postType", postType);
         return "board1/list";
     }
+    @GetMapping("/search")
+    public String search(@RequestParam String postType, @RequestParam String keyword, Model model) {
+        model.addAttribute("lists", board1Service.searchByKeyword(postType, keyword));
+        model.addAttribute("postType", postType);
+        model.addAttribute("keyword", keyword);
+        return "board1/list";
+    }
 }
