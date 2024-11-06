@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface Board1Repository extends JpaRepository<Board1, Long> {
     List<Board1> findByPostType(String postType);
+    List<Board1> findByPostTypeAndTitleContainingOrPostTypeAndContentContaining(String postType1, String titleKeyword, String postType2, String contentKeyword);
 }
