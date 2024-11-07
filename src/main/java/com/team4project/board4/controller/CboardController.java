@@ -43,9 +43,9 @@ public class CboardController {
     @GetMapping("/clist")
     public void list(CpageRequestDTO cpageRequestDTO, Model model) {
 
-        CpageResponseDTO<CboardDTO> cresponseDTO = cboardService.list(cpageRequestDTO);
-        log.info(cresponseDTO);
-        model.addAttribute("cresponseDTO", cresponseDTO);
+        CpageResponseDTO<CboardDTO> cpageresponseDTO = cboardService.list(cpageRequestDTO);
+        log.info(cpageresponseDTO);
+        model.addAttribute("cpageresponseDTO", cpageRequestDTO);
     }
     @GetMapping("/cregister")
     public void registerGET() {
