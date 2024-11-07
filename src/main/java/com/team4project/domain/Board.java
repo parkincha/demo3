@@ -13,6 +13,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -61,12 +62,12 @@ public class Board {
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="createdAt")
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="updatedAt")
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
     @ColumnDefault("0") //기본값 0
     private Long hitcount; //조회수
@@ -92,10 +93,5 @@ public class Board {
         imageSet.forEach(boardImage -> boardImage.changeBoard(null));
         this.imageSet.clear();
     }
-
-
-
-
-
 
 }

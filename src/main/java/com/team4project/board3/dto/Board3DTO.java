@@ -34,11 +34,11 @@ public class Board3DTO {
         this.content = content;
     }
 
-    public String getAuthor() {
+    public String getCommenter() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setCommenter(String author) {
         this.author = author;
     }
 }

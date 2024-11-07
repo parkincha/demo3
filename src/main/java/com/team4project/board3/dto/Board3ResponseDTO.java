@@ -1,24 +1,26 @@
 package com.team4project.board3.dto;
 
+import com.team4project.domain.User;
+
 import java.time.LocalDateTime;
 
 public class Board3ResponseDTO {
-    private Long id;
+    private Long bno;
     private String title;
     private String content;
-    private String author;
+    private User user;
     private LocalDateTime createdAt;
 
     // 기본 생성자
     public Board3ResponseDTO() {}
 
     // Getter와 Setter
-    public Long getId() {
-        return id;
+    public Long getBno() {
+        return bno;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setBno(Long bno) {
+        this.bno = bno;
     }
 
     public String getTitle() {
@@ -37,12 +39,12 @@ public class Board3ResponseDTO {
         this.content = content;
     }
 
-    public String getAuthor() {
-        return author;
+    public User getUser() {
+        return user;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public LocalDateTime getCreatedAt() {

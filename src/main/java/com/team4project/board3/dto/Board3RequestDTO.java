@@ -1,10 +1,16 @@
 package com.team4project.board3.dto;
 
+import com.team4project.domain.User;
+import com.team4project.domain.boardContent.BoardImage;
+
+import java.util.Set;
+
 public class Board3RequestDTO {
     private Long id; // id 필드 추가
     private String title;
     private String content;
-    private String author;
+    private User user;
+    private Set<BoardImage> image;
 
     // 기본 생성자
     public Board3RequestDTO() {}
@@ -26,20 +32,29 @@ public class Board3RequestDTO {
         this.title = title;
     }
 
-    public String getContent() {
+   /* public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
         this.content = content;
+    }*/
+
+    public User getUser() {
+        return user;
     }
 
-    public String getAuthor() {
-        return author;
+    public void setUser(String author) {
+        this.user = user;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setImage(Set<BoardImage> image) {
+        this.image = image;
     }
+
+    public Set<BoardImage> getImage() {
+        return image;
+    }
+
 }
 
