@@ -17,20 +17,24 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@Log4j2
 @EnableWebSecurity //Spring Security 설정을 위한 어노테이션
 @RequiredArgsConstructor //final로 선언된 필드에 대한 생성자를 생성
 public class CustomSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        log.info("--------security config--------");
         return http
                 .csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable()) // csrf 설정을 disable로 설정해야 postman에서 테스트 가능
-                .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.disable()) // 다른 서버로 요청을 보낼 때 cors 설정을 disable로 설정해야 postman에서 테스트 가능
+               // .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.disable()) // 다른 서버로 요청을 보낼 때 cors 설정을 disable로 설정해야 postman에서 테스트 가능
                 .authorizeHttpRequests(authorizeHttpRequestsConfigurer -> authorizeHttpRequestsConfigurer
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-                        .requestMatchers("/","/home", "/board/**", "/user/**", "/","/all").permitAll() // "/board/ 부분 "/singup" 로 이후 수정
+                        .requestMatchers("/user/login/", "/board/**", "/user/**"
+                                ,"/all","/home", "/cboard/**").permitAll() // "/board/ 부분 "/singup" 로 이후 수정
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated())
+
                 .formLogin(formLoginConfigurer -> formLoginConfigurer
                         .loginPage("/user/login") // 로그인 페이지 설정
                         .loginProcessingUrl("/loginProcess") // 로그인 처리 페이지 설정
@@ -38,6 +42,7 @@ public class CustomSecurityConfig {
                         .passwordParameter("password") // 로그인 페이지의 password 파라미터 설정
                         .defaultSuccessUrl("/") // 로그인 성공 후 이동할 페이지
                         .permitAll())
+
                 .logout(logoutConfigurer -> logoutConfigurer
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/")
@@ -51,7 +56,7 @@ public class CustomSecurityConfig {
         return new BCryptPasswordEncoder();
     }
     @Bean
-    public WebSecurityCustomizer configure() {
+    public WebSecurityCustomizer configure() {// 정적 자원을 Security 적용에 제외 시킴
         return (web) -> web.ignoring() // static resource에 대한 security 설정을 무시하도록 설정
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
         //.requestMatchers("/static/**"); // 구버전: static resource에 대한 security 설정을 무시하도록 설정
@@ -60,14 +65,11 @@ public class CustomSecurityConfig {
     @Bean // authenticationManager를 Bean 역할:
     public AuthenticationManager authenticationManagerBean(HttpSecurity http,  // authenticationManager를 Bean을 등록하여
                                                            BCryptPasswordEncoder bCryptPasswordEncoder,
-                                                           UserDetailsService userDetailsService,
-                                                           AuthenticationManagerBuilder authenticationManagerBuilder)
+                                                           UserDetailsService userDetailsService)
             throws Exception {
         AuthenticationManagerBuilder builder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
        builder.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
         return builder.build();
     }
-
-
 }

@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/user")
+/*@RequestMapping("/user")*/
 @Controller
 @RequiredArgsConstructor
 public class UserController {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @GetMapping("/join")
+    @GetMapping("/user/join")
     public void join(){
     }
 
-    @PostMapping("/register")
+    @PostMapping("/user/register")
     public String register(User user){
         System.out.println("register user: " + user);
         String rawPassword = user.getPwd();
@@ -32,10 +32,11 @@ public class UserController {
         return "redirect:/user/login"; // 회원가입 후 로그인 페이지로 이동
     }
 
-    @GetMapping("/login")
+    @GetMapping("/user/login")
     public void login(){
     }
     @GetMapping("/home") //홈화면
-    public void home(){
+    public String home(){
+        return "home";
     }
 }

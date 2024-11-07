@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/basic1.html}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +9,11 @@
     <link rel="stylesheet" href="../static/css/login.css">
 </head>
 <body>
+<div layout:fragment="content">
 <header class="header">
     <span style="font-size: 2rem; display: inline;"> 여기서</span>
     <h1 style="display: inline; font-size: 5rem;">찾개냥</h1>
-    <!-- 작은 텍스트 추가 -->
     <nav class="nav justify-content-end mt-3">
-
         <a class="nav-link text-black" href="signup.html">SIGN UP</a>
         <a class="nav-link text-black" href="login.html">LOGIN</a>
         <a class="nav-link text-black" href="home1.html">HOME</a>
@@ -21,10 +22,9 @@
 <main>
     <div class="login-container">
         <div class="signup-prompt">
-            <img src="photo/warkdog.PNG" alt="산책하는 강아지">
+            <img src="../static/photo/warkdog.PNG" alt="산책하는 강아지">
             <h2>혹시 회원이 아니신가요?</h2>
             <p><a href="signup.html" class="signup-link">회원가입하기</a></p>
-
         </div>
         <div class="login-form">
             <h2>로그인</h2>
@@ -32,8 +32,8 @@
                 <label for="id">ID</label>
                 <input type="text" id="id" name="id" required>
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required><p/>
-                <button type="submit"><a href="user/home.html"/> CLICK HERE</button>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">로그인</button>
             </form>
         </div>
     </div>
@@ -41,5 +41,6 @@
 <footer>
     <p>© 2024 .찾개냥. All rights reserved.</p>
 </footer>
+</div>
 </body>
 </html>

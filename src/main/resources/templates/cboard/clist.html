@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/basic1.html}">
-
+      layout:decorate="~{layout/basic.html}">
 <div layout:fragment="content">
     <div class="container mt-3">
         <div class="form-group text-right">
-            <a href="/board/insert">
+            <a href="/cboard/insert">
                 <button type="button" class="btn btn-secondary btn-sm" id="writeBtn">글쓰기</button>
             </a>
         </div>
+        <a href="/cboard/cview/1"></a>
 
         <table class="table table-hover">
             <thead>
@@ -22,12 +22,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="board:${lists}">
-                <td>[[${board.num}]]</td>
-                <td><a th:href="|@{/templates/cboard/view(num=${board.num})}|">[[${board.title }]]</a></td>
-                <td>[[${board.writer }]]</td>
-                <td>[[${board.regdate }]]</td>
-                <td>[[${board.hitcount }]]</td>
+            <tr th:each="cboard:${clists}">
+                <td>[[${cboard.num}]]</td>
+                <td><a th:href="|@{/cboard/cview(num=${cboard.num})}|">[[${board.title }]]</a></td>
+                <td>[[${cboard.writer }]]</td>
+                <td>[[${cboard.regdate }]]</td>
+                <td>[[${cboard.hitcount }]]</td>
             </tr>
             </tbody>
         </table>
