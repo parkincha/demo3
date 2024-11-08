@@ -1,35 +1,188 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/basic1.html}">
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<div layout:fragment="content">
-    <div class="container mt-3">
-        <div class="form-group text-right">
-            <a href="/board/insert">
-                <button type="button" class="btn btn-secondary btn-sm" id="writeBtn">글쓰기</button>
-            </a>
+    <style>
+        /* 법령 문구와 반려동물 이미지 섹션 스타일 */
+        .law-section {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #F0F8F8;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .law-section p {
+            flex: 1;
+            font-size: 0.9rem;
+            color: #333;
+            margin: 0;
+            padding-right: 10px;
+        }
+
+        .animal-image {
+            width: 100px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        /* 카드 갤러리 스타일 */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #08A88A;
+            color: white;
+            padding: 5px;
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+        }
+
+        /* 동물찾기 라벨 */
+        .board-type {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+            background-color: #FF0000;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        /* 주인찾기 라벨 */
+        .owner-find .board-type {
+            background-color: #0000FF;
+        }
+
+        .card-body img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .card-footer {
+            background-color: #f7f7f7;
+            padding: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mt-4">유기동물 정보</h2>
+    <p class="text-center">전체 2,699 건</p>
+
+    <!-- 법령 문구와 반려동물 이미지 섹션 -->
+    <div class="law-section">
+        <p>＊동물보호법 제12조 제1항 및 같은 법 시행규칙 제8조 제1항 및 제9조제2항에 따라 동물분실신고를 하는 공간입니다.</p>
+
+    </div>
+
+    <div class="gallery">
+        <!-- 동물찾기 카드 예제 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="board-type">동물찾기</span>
+                08 2024-11
+            </div>
+            <img src="/photo/dog1.jpg" alt="Pet Image">
+            <div class="card-body">
+                <h5 class="card-title">믹스견</h5>
+                <p>공고번호: 경남-의령-2024-00211</p>
+                <p>성별: 암컷</p>
+                <p>발견장소: 의령군 유기견보호센터</p>
+                <p>특징: 보호 중 유기견 철수...</p>
+            </div>
+            <div class="card-footer text-center">
+                조회수: 0
+            </div>
         </div>
 
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회수</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="board:${lists}">
-                <td>[[${board.num}]]</td>
-                <td><a th:href="|@{/templates/cboard/view(num=${board.num})}|">[[${board.title }]]</a></td>
-                <td>[[${board.writer }]]</td>
-                <td>[[${board.regdate }]]</td>
-                <td>[[${board.hitcount }]]</td>
-            </tr>
-            </tbody>
-        </table>
+        <!-- 주인찾기 카드 예제 -->
+        <div class="card owner-find">
+            <div class="card-header">
+                <span class="board-type">주인찾기</span>
+                08 2024-11
+            </div>
+            <img src="/photo/cat1.jpg" alt="Pet Image">
+            <div class="card-body">
+                <h5 class="card-title">한국 고양이</h5>
+                <p>공고번호: 서울-강남-2024-00345</p>
+                <p>성별: 수컷</p>
+                <p>발견장소: 강남구 동물보호센터</p>
+                <p>특징: 털이 길고 순한 성격...</p>
+            </div>
+            <div class="card-footer text-center">
+                조회수: 12
+            </div>
+        </div>
+
+        <!-- 추가 동물찾기 카드 예제 -->
+        <div class="card">
+            <div class="card-header">
+                <span class="board-type">동물찾기</span>
+                08 2024-11
+            </div>
+            <img src="/photo/dog2.jpg" alt="Pet Image">
+            <div class="card-body">
+                <h5 class="card-title">포메라니안</h5>
+                <p>공고번호: 부산-해운대-2024-00567</p>
+                <p>성별: 암컷</p>
+                <p>발견장소: 해운대구 유기견보호센터</p>
+                <p>특징: 활발하고 사람을 좋아함...</p>
+            </div>
+            <div class="card-footer text-center">
+                조회수: 5
+            </div>
+        </div>
+
+        <!-- 추가 주인찾기 카드 예제 -->
+        <div class="card owner-find">
+            <div class="card-header">
+                <span class="board-type">주인찾기</span>
+                08 2024-11
+            </div>
+            <img src="/photo/rabbit.jpg" alt="Pet Image">
+            <div class="card-body">
+                <h5 class="card-title">집토끼</h5>
+                <p>공고번호: 대전-서구-2024-00987</p>
+                <p>성별: 암컷</p>
+                <p>발견장소: 대전 동물보호소</p>
+                <p>특징: 귀가 크고 부드러운 털...</p>
+            </div>
+            <div class="card-footer text-center">
+                조회수: 3
+            </div>
+        </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
