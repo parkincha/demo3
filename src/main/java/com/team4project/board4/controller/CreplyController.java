@@ -45,8 +45,8 @@ public class CreplyController {
     @GetMapping(value = "/list/{cno}")
     public CpageResponseDTO<CreplyDTO> getList(@PathVariable("cno") Long cno,
                                                CpageRequestDTO cpageRequestDTO) {
-        CpageResponseDTO<CreplyDTO> cresponseDTO = creplyService.getListOfCboard(cno, cpageRequestDTO);
-        return cresponseDTO;
+        CpageResponseDTO<CreplyDTO> cpageresponseDTO = creplyService.getListOfCboard(cno, cpageRequestDTO);
+        return cpageresponseDTO;
     }
     @DeleteMapping("/{rno}")
     public Map<String, Long> remove(@PathVariable("rno") Long rno) {
