@@ -42,4 +42,7 @@ public class Comment {
     public void changeText(String text) {
         this.commentText = text;
     }
+
+    public void setContent(String content) {
+    }
 }

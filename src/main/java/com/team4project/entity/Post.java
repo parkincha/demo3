@@ -20,6 +20,6 @@ public class Post {
     private User2 author;
 
     @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
-    private List<Comment2> comments=new ArrayList<>();
+    private List<Comment> comments=new ArrayList<>();
 
 }

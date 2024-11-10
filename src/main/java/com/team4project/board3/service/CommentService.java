@@ -12,6 +12,13 @@ public interface CommentService {
     Comment createComment(Board board, CommentDTO commentDTO);
 
     Comment createComment(Long boardId, CommentDTO commentDTO);
+
     List<Comment> getComments(Long boardId);
-    void deleteComment(Long id);
+
+    void deleteComment(Long rno);
+
+    void deleteComment(Long id,String userId);
+
+    @Transactional
+    Comment updateComment(Long id, CommentDTO commentDTO); // 댓글 수정 메서드 추가
 }
